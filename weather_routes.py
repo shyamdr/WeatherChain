@@ -16,21 +16,23 @@ def get_weather(lat, lon):
 # Load routes
 routes = pd.read_csv("routes.csv")
 
+# Prepare results list
+results = []
+
 # Loop through routes and fetch weather
 for index, row in routes.iterrows():
     start_weather = get_weather(row["start_lat"], row["start_lon"])
     end_weather = get_weather(row["end_lat"], row["end_lon"])
     
-    # Check if weather data was fetched successfully
     if start_weather is None or end_weather is None:
         print(f"Route {row['route_id']}: Weather data unavailable, skipping.")
+        result = {"route_id": row["route_id"], "status": "Skipped", "start_rain": None, "end_rain": None, "risk": None}
+        results.append(result)
         continue
     
-    # Get precipitation for start (day 1) and end (arrival day)
     start_rain = start_weather["precipitation_sum"][0]
     end_rain = end_weather["precipitation_sum"][int(row["travel_days"]) - 1]
     
-    # Determine risk based on precipitation
     risk = "LOW"
     if start_rain > 10 or end_rain > 10:
         risk = "HIGH"
@@ -40,4 +42,13 @@ for index, row in routes.iterrows():
     print(f"  End (Day {row['travel_days']}): {end_rain} mm precipitation")
     print(f"  Risk: {risk}")
     
-    time.sleep(1)  # Delay between routes
+    # Store result
+    result = {"route_id": row["route_id"], "status": "Processed", "start_rain": start_rain, "end_rain": end_rain, "risk": risk}
+    results.append(result)
+    
+    time.sleep(1)
+
+# Save results to CSV
+results_df = pd.DataFrame(results)
+results_df.to_csv("results.csv", index=False)
+print("Results saved to results.csv")

@@ -1,0 +1,11 @@
+route_id,status,start_rain,end_rain,risk
+1.0,Processed,24.3,0.0,HIGH
+2.0,Processed,1.8,3.0,LOW
+3.0,Processed,0.0,0.0,LOW
+4.0,Skipped,,,
+5.0,Processed,0.0,0.0,LOW
+6.0,Processed,0.0,0.0,LOW
+7.0,Processed,0.1,0.0,LOW
+8.0,Processed,1.1,0.0,LOW
+9.0,Processed,0.0,0.0,LOW
+10.0,Processed,6.5,0.0,LOW
