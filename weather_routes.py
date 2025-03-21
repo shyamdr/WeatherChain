@@ -6,12 +6,12 @@ import time
 def get_weather(lat, lon):
     url = f"https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lon}&daily=temperature_2m_max,precipitation_sum&timezone=UTC"
     try:
-        response = requests.get(url, timeout=10)  # Set a 10-second timeout
-        response.raise_for_status()  # Raise an error for bad HTTP status codes
+        response = requests.get(url, timeout=10)
+        response.raise_for_status()
         return response.json()["daily"]
     except requests.exceptions.RequestException as e:
         print(f"Error fetching weather for lat={lat}, lon={lon}: {e}")
-        return None  # Return None if the request fails
+        return None
 
 # Load routes
 routes = pd.read_csv("routes.csv")
@@ -27,12 +27,17 @@ for index, row in routes.iterrows():
         continue
     
     # Get precipitation for start (day 1) and end (arrival day)
-    start_rain = start_weather["precipitation_sum"][0]  # Day 1
-    end_rain = end_weather["precipitation_sum"][int(row["travel_days"]) - 1]  # Arrival day
+    start_rain = start_weather["precipitation_sum"][0]
+    end_rain = end_weather["precipitation_sum"][int(row["travel_days"]) - 1]
+    
+    # Determine risk based on precipitation
+    risk = "LOW"
+    if start_rain > 10 or end_rain > 10:
+        risk = "HIGH"
     
     print(f"Route {row['route_id']}:")
     print(f"  Start (Day 1): {start_rain} mm precipitation")
     print(f"  End (Day {row['travel_days']}): {end_rain} mm precipitation")
+    print(f"  Risk: {risk}")
     
-    # Add a small delay to avoid overwhelming the API
-    time.sleep(1)  # Wait 1 second before the next request
+    time.sleep(1)  # Delay between routes
