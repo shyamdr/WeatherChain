@@ -27,7 +27,7 @@ model = LogisticRegression()
 model.fit(X_train, y_train)
 
 # Load routes
-routes = pd.read_csv("routes.csv")
+routes = pd.read_csv("/app/data/routes.csv")
 results = []
 
 # Loop through routes and fetch weather
@@ -63,5 +63,5 @@ for index, row in routes.iterrows():
 
 # Save results to CSV
 results_df = pd.DataFrame(results)
-results_df.to_csv("results.csv", index=False)
+results_df.to_csv("/app/data/results.csv", index=False)
 print("Results saved to results.csv")
