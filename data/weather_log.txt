@@ -1,0 +1,27 @@
+2025-04-06 15:14:56,289 - Cache hit for 19.0,68.5
+2025-04-06 15:14:56,294 - Cache hit for 25.5,85.5
+2025-04-06 15:14:56,299 - Cache hit for 35.5,96.0
+2025-04-06 15:14:56,303 - Cache hit for 12.0,73.0
+2025-04-06 15:14:56,307 - Cache hit for 29.0,92.0
+2025-04-06 15:14:56,312 - Cache hit for 16.5,70.0
+2025-04-06 15:14:56,317 - Cache hit for 25.5,74.0
+2025-04-06 15:14:56,321 - Cache hit for 18.5,95.5
+2025-04-06 15:14:56,326 - Cache hit for 12.5,73.5
+2025-04-06 15:14:56,330 - Cache hit for 21.0,96.0
+2025-04-06 15:14:56,334 - Cache hit for 12.5,73.5
+2025-04-06 15:14:56,339 - Cache hit for 31.0,91.5
+2025-04-06 15:14:56,343 - Cache hit for 9.5,77.0
+2025-04-06 15:14:56,347 - Cache hit for 14.0,77.0
+2025-04-06 15:14:56,352 - Cache hit for 33.0,83.0
+2025-04-06 15:14:56,358 - Cache hit for 23.0,71.0
+2025-04-06 15:14:56,363 - Cache hit for 25.5,80.5
+2025-04-06 15:14:56,368 - Cache hit for 25.0,88.0
+2025-04-06 15:14:56,372 - Cache hit for 28.5,76.5
+2025-04-06 15:14:56,376 - Cache hit for 9.5,81.0
+2025-04-06 15:14:56,381 - Weather data saved to data/weather_results.csv
+2025-04-06 15:50:45,169 - Risk prediction complete
+2025-04-06 15:50:46,139 - Closing down clientserver connection
+2025-04-06 15:59:31,525 - Risk prediction complete
+2025-04-06 15:59:32,481 - Closing down clientserver connection
+2025-04-06 16:08:15,973 - Risk prediction complete, results saved to results.parquet
+2025-04-06 16:08:16,814 - Closing down clientserver connection
